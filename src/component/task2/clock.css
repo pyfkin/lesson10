@@ -1,0 +1,19 @@
+.rounded-circle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: gray;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+
+.rounded-circle .date{
+    color: #0600ff;
+}
+
+.rounded-circle .time{
+    color: #00fff8;
+}
+

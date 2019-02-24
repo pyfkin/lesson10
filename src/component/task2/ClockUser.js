@@ -4,7 +4,7 @@ import UserTime from './Clock/UserTime';
 import UserDate from './Clock/UserDate';
 import './clock.css'
 
-class Clock extends Component{
+class ClockUser extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -43,8 +43,8 @@ class Clock extends Component{
     }
 }
 
-Clock.propTypes = {
+ClockUser.propTypes = {
     ishide: PropTypes.bool,
 };
 
-export default Clock;
+export default ClockUser;

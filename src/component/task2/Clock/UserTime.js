@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-const Time = (props) => {
-    return (
-        <div className="time">{(new Date()).toDateString()}
-        </div>
-    )
-};
+class UserTime extends Component{
+    constructor(props){
+        super(props);
+    }
 
-export default Time;
+    render()
+    {
+        return (
+            <div className="time">{this.props.time}
+            </div>
+        )
+    }
+}
+
+
+
+export default UserTime;
