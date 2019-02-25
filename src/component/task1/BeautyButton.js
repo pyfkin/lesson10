@@ -14,7 +14,7 @@ const BeautyButton = (props) =>
 
     BeautyButton.propTypes = {
         label: PropTypes.string,
-        onclick: PropTypes.func,
+        onClick: PropTypes.func,
         type: PropTypes.string,
     };
     export default BeautyButton;

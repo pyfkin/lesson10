@@ -32,37 +32,41 @@ class ButtonPanel extends React.Component{
             textAlign: 'center',
         };
 
-        this._buttonValue = this._buttonValue.bind(this);
     }
 
-    _buttonValue = () =>{
-        console.log(this.state.value);
-        this.setState(() =>{
-            return this.state.value
-        })
-    };
+    // _buttonValue = (name) =>{
+    //      console.log(name);
+    //     this.setState((name) =>{
+    //         this.state.value
+    //         return this.state.value
+    //     })
+    // };
 
 
     render(){
-        return(
-            <div style={this.style}>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._1)} text={this.state.text._1}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._2)} text={this.state.text._2}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._3)} text={this.state.text._3}/>
+        return <div style={this.style}>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '1')} text='1'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '2')} text='2'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '3')} text='3'/>
 
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._4)} text={this.state.text._4}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._5)} text={this.state.text._5}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._6)} text={this.state.text._6}/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '4')}  text='4'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '5')}  text='5'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '6')}  text='6'/>
 
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._7)} text={this.state.text._7}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._8)} text={this.state.text._8}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._9)} text={this.state.text._9}/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '7')}  text='7'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '8')}  text='8'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '9')}  text='9'/>
 
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text.reset)} text={this.state.text.reset}/>
-                <TimeButtom onButtonClick={this._buttonValue.bind(this, this.state.text._0)} text={this.state.text._0}/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '#')}  text='#'/>
+                <TimeButtom onButtonClick={this._handleClick.bind(this, '0')}  text='0'/>
             </div>
-        )
+
     }
+
+    _handleClick = (number) => {
+        this.props.onClick(number)
+    }
+
 }
 
 export default ButtonPanel;

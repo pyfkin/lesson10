@@ -15,8 +15,23 @@ class App extends Component {
     super(props);
 
     this.state = {
+        value: null,
+        text: {
+            _1: '1',
+            _2: '2',
+            _3: '3',
+            _4: '4',
+            _5: '5',
+            _6: '6',
+            _7: '7',
+            _8: '8',
+            _9: '9',
+            _0: '0',
+            reset: '#',
+        },
         counter: 0,
         isHide: false,
+        _text: '00',
     };
 
     this._prevHandler = this._prevHandler.bind(this);
@@ -50,6 +65,14 @@ class App extends Component {
       })
   }
 
+  _setTimer = (text) =>
+  {
+      // console.log(text);
+      this.setState(() => ({
+        _text : this.state._text + text,
+      }))
+  }
+
   render(){
       const style ={
           display: 'flex',
@@ -80,12 +103,12 @@ class App extends Component {
                       <ClockTitle text="S"/>
                   </div>
                   <div style={style}>
-                      <Clock text="00"/>
-                      <Clock text="00"/>
-                      <Clock text="00"/>
+                      <Clock text={this.state._text} onClick={'red'}/>
+                      <Clock text={this.state._text}/>
+                      <Clock text={this.state._text}/>
                   </div>
                   <div>
-                      <ButtonPanel style={style}/>
+                      <ButtonPanel style={style} onClick={this._setTimer.bind(this)}/>
                   </div>
                   <button>START</button>
               </div>
@@ -93,5 +116,4 @@ class App extends Component {
       )
   }
 }
-
 export default App;

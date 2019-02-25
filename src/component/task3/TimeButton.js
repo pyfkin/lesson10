@@ -4,9 +4,6 @@ class TimeButton extends React.Component{
     constructor(props)
     {
         super(props);
-        // this.state ={
-        //     text: props.text,
-        // };
 
         this.style = {
             display: 'table-cel',
@@ -15,14 +12,6 @@ class TimeButton extends React.Component{
             height: '25px',
             verticalAlign: 'middle',
         };
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        // console.log(this.state.text);
-        this.props.onButtonClick();
-
     }
 
     render()
@@ -30,9 +19,13 @@ class TimeButton extends React.Component{
 
         return(
         <div>
-            <button style={this.style} onClick={this.handleClick}>{this.props.text}</button>
+            <button style={this.style} onClick={this._handleClick}>{this.props.text}</button>
         </div>
         )
+    }
+
+    _handleClick = () =>{
+        this.props.onButtonClick(this.props.text)
     }
 }
 
