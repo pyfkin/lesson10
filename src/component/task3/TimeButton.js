@@ -19,14 +19,15 @@ class TimeButton extends React.Component{
 
         return(
         <div>
-            <button style={this.style} onClick={this._handleClick}>{this.props.text}</button>
+            <button style={this.style} onClick={this.props.onButtonClick}>{this.props.text}</button>
         </div>
         )
     }
 
-    _handleClick = () =>{
-        this.props.onButtonClick(this.props.text)
-    }
+    // _handleClick = () =>{
+    //     this.props._handleRight();
+    //     // this.props.onButtonClick(this.props.text)
+    // }
 }
 
 export default TimeButton;

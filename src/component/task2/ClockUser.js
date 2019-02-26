@@ -9,7 +9,7 @@ class ClockUser extends Component{
         super(props);
         this.state = {
             time: new Date().toLocaleTimeString(),
-            date: new Date().toDateString(),
+            date: new Date().toLocaleDateString(),
         }
     }
 
@@ -26,7 +26,7 @@ class ClockUser extends Component{
 
     tick() {
         this.setState({
-            time: new Date().toLocaleString()
+            time: new Date().toLocaleTimeString().normalize()
         });
     }
 

@@ -10,70 +10,106 @@ import ButtonPanel from './component/task3/ButtonPanel';
 
 
 
-class App extends Component {
-  constructor(props){
-    super(props);
+class App extends Component
+{
+    constructor(props)
+    {
+        super(props);
 
-    this.state = {
-        value: null,
-        text: {
-            _1: '1',
-            _2: '2',
-            _3: '3',
-            _4: '4',
-            _5: '5',
-            _6: '6',
-            _7: '7',
-            _8: '8',
-            _9: '9',
-            _0: '0',
-            reset: '#',
-        },
-        counter: 0,
-        isHide: false,
-        _text: '00',
+        this.state = {
+            value: null,
+            counter: 0,
+            isHide: false,
+            currentActive: 1,
+            hour: '00',
+            minutes: '00',
+            seconds: '00',
+        };
+
+        this.inputHour = React.createRef();
+        this.inputMinutes = React.createRef();
+        this.inputSeconds = React.createRef();
+
+
+        this._prevHandler = this._prevHandler.bind(this);
+        this._nextHandler = this._nextHandler.bind(this);
+        this._resetHandler = this._resetHandler.bind(this);
+        this._toggleOnOffDate = this._toggleOnOffDate.bind(this);
+    }
+
+    _prevHandler()
+    {
+        this.setState({
+            counter: this.state.counter - 1
+        })
+    }
+
+    _nextHandler()
+    {
+        this.setState({
+            counter: this.state.counter + 1
+        })
+    }
+
+    _resetHandler()
+    {
+        this.setState({
+            counter: 0,
+        })
+    }
+
+    _toggleOnOffDate()
+    {
+
+        this.setState({
+            isHide: !this.state.isHide,
+        })
+    }
+
+    _setTimer = (text) =>
+    {
+        //if  (this.state.currentActive === 1)
+        this.setState(() => ({
+
+                hour: text
+        }))
     };
 
-    this._prevHandler = this._prevHandler.bind(this);
-    this._nextHandler = this._nextHandler.bind(this);
-    this._resetHandler = this._resetHandler.bind(this);
-    this._toggleOnOffDate = this._toggleOnOffDate.bind(this);
-  }
 
-  _prevHandler(){
-      this.setState({
-          counter: this.state.counter - 1
-      })
-  }
+    componentDidMount()
+    {
+        this.inputHour.current.focus();
+    }
 
-  _nextHandler(){
-      this.setState({
-          counter: this.state.counter + 1
-      })
-  }
+    _handleLeft()
+    {
+        if (this.inputSeconds.current.focus){
+            //this.state.currentActive = 2;
+            console.log('3');
+            this.inputMinutes.current.focus();
+        } else if (this.inputMinutes.current.focus){
+           // this.state.currentActive = 1;
+            console.log('4');
+            this.inputHour.current.focus();
+        }
+    }
 
-  _resetHandler(){
-      this.setState({
-          counter: 0,
-      })
-  }
+    _handleRight()
+    {
+        if (this.inputHour.current.focus){
+            console.log('1');
+           // this.state.currentActive = 2;
+            this.inputMinutes.current.focus();
+        } else if (this.inputMinutes.current.focus){
+            //this.state.currentActive = 3;
+            console.log('2');
+            this.inputSeconds.current.focus();
+        }
+    }
 
-  _toggleOnOffDate(){
 
-      this.setState({
-          isHide : !this.state.isHide,
-      })
-  }
 
-  _setTimer = (text) =>
-  {
-      // console.log(text);
-      this.setState(() => ({
-        _text : this.state._text + text,
-      }))
-  }
-
-  render(){
+    render(){
       const style ={
           display: 'flex',
           flexWrap: 'wrap',
@@ -103,12 +139,15 @@ class App extends Component {
                       <ClockTitle text="S"/>
                   </div>
                   <div style={style}>
-                      <Clock text={this.state._text} onClick={'red'}/>
-                      <Clock text={this.state._text}/>
-                      <Clock text={this.state._text}/>
+                      <Clock text={this.state.hour} clockRef={this.inputHour} />
+                      <Clock text={this.state.minutes} clockRef={this.inputMinutes}/>
+                      <Clock text={this.state.seconds} clockRef={this.inputSeconds}/>
                   </div>
                   <div>
-                      <ButtonPanel style={style} onClick={this._setTimer.bind(this)}/>
+                      <ButtonPanel style={style} handleLeft={this._handleLeft.bind(this)}
+                                                 handleRight={this._handleRight.bind(this)}
+                                                 onClick={this._setTimer.bind(this)}
+                      />
                   </div>
                   <button>START</button>
               </div>

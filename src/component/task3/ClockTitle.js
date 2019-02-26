@@ -12,16 +12,7 @@ class ClockTitle extends React.Component
             width: '100px',
             height: '25px',
         };
-        this.state ={
-            time: props.text,
-        }
     }
-
-    _timeChange = () =>{
-        this.setState({
-            time: this.state.time,
-        })
-    };
 
     render()
     {

@@ -1,5 +1,6 @@
 .rounded-circle {
     display: flex;
+    border: 25px solid black;
     flex-direction: column;
     justify-content: center;
     border-radius: 50%;

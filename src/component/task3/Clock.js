@@ -3,9 +3,7 @@ import React from 'react';
 class Clock extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            stripBg: ''
-        };
+
         this.style = {
             display: 'block',
             backgroundColor: 'white',
@@ -15,15 +13,14 @@ class Clock extends React.Component{
         };
     }
 
-    handleClick() {
-        this.setState({ stripBg: 'yellow' });
-    }
+
 
     render() {
-        this.style.backgroundColor = this.state.stripBg;
+        console.log(this.props.clockRef);
         return (
+
             <div>
-                <span onClick={this.handleClick.bind(this)} style={this.style}>{this.props.text}</span>
+                <input ref={this.props.clockRef} style={this.style} value={this.props.text}/>
             </div>
         )
     }
