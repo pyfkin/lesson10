@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ClockTitle extends React.Component
+class ClockTitle extends React.PureComponent
 {
     constructor(props){
         super(props);

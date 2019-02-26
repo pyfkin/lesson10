@@ -1,17 +1,7 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-class UserDate extends Component{
-    constructor(props){
-        super(props);
-    }
-    render()
-    {
-        return(
-            <div className="date">{this.props.date}
-            </div>
-        )
-    }
-}
+const UserDate = (props) => {
+        return <div className="date">{props.date}</div>
+};
 
 export default UserDate;

@@ -32,7 +32,7 @@ class ClockUser extends Component{
 
     render()
     {
-        const body = this.props.ishide && <UserDate ishide={this.props.ishide} date={this.state.date}/>;
+        const body = this.props.ishide && (<UserDate date={this.state.date}/>);
         return (
 
             <div className="rounded-circle">

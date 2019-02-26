@@ -1,19 +1,9 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-class UserTime extends Component{
-    constructor(props){
-        super(props);
-    }
+const UserTime = (props) =>{
+    return <div className="time">{props.time}</div>
 
-    render()
-    {
-        return (
-            <div className="time">{this.props.time}
-            </div>
-        )
-    }
-}
+};
 
 
 

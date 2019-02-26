@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TimeButton extends React.Component{
+class TimeButton extends React.PureComponent{
     constructor(props)
     {
         super(props);
