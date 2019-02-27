@@ -50,11 +50,19 @@ class App extends PureComponent {
         })
     }
 
-    _hideTimerInput = (q) => {
-        console.log(q);
+    _hideTimerInput = () => {
         this.setState({
             isHideTimerInput: !this.state.isHideTimerInput
         })
+    };
+
+    updateData = (time) => {
+        this.setState({
+            newHour: time,
+        });
+        console.log(time);
+
+        this._hideTimerInput();
     };
 
     render() {
@@ -82,12 +90,12 @@ class App extends PureComponent {
                 </div>
                 <div className="lesson10-task3 col-md-3">
                     <div>
-                        { this.state.isHideTimerInput && <TimerInput onClick={this._hideTimerInput.bind(this )} /> }
+                        { this.state.isHideTimerInput && <TimerInput updateData={this.updateData.bind(this)} /> }
                     </div>
                     <div>
-
+                        { !this.state.isHideTimerInput && <button onClick={this._hideTimerInput.bind(this)}>STOP</button> }
                     </div>
-                    { !this.state.isHideTimerInput && <button onClick={this._hideTimerInput.bind(this )}>STOP</button> }
+
                 </div>
                 <div className="lesson10-task4 col-md-3">
 

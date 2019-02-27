@@ -12,10 +12,6 @@ class Clock extends React.PureComponent{
         };
     }
 
-
-    componentDidUpdate(){
-        console.log(this.props.clockRef['current'].value);
-    }
     render() {
         return (
             <div>

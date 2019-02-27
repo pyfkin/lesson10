@@ -9,9 +9,11 @@ class TimerInput extends React.Component {
         super(props);
         this.state = {
             currentActive: 1,
-            hour: '',
-            minutes: '',
-            seconds: '',
+            time:{
+                hour: '',
+                minutes: '',
+                seconds: '',
+            },
             isHideTimerInput: false,
         };
 
@@ -27,7 +29,7 @@ class TimerInput extends React.Component {
     _setTimer = (text) => {
         switch (this.state.currentActive) {
             case 1:
-                if (this.state.hour.length > 1) {
+                if (this.state.time.hour.length > 1) {
                     this._setCurrenActive(2);
                     this.inputMinutes.current.focus();
                     // this.setState({
@@ -35,33 +37,45 @@ class TimerInput extends React.Component {
                     // });
                 } else {
                     this.setState({
-                        hour: this.state.hour + text
+                        time:{
+                            ...this.state.time,
+                            hour: this.state.time.hour + text
+                        }
                     });
                 }
                 break;
             case 2:
-                if (this.state.minutes.length > 1) {
+                if (this.state.time.minutes.length > 1) {
                     this._setCurrenActive(3);
                     this.inputSeconds.current.focus();
                     // this.setState({
                     //     minutes: text
                     // });
                 } else {
-                    this.setState(() => ({
-                        minutes: this.state.minutes + text
-                    }));
+                    this.setState({
+                        time:{
+                            ...this.state.time,
+                            minutes: this.state.time.minutes + text
+                        }
+                    });
                 }
                 break;
             case 3:
-                if (this.state.seconds.length >= 2) {
+                if (this.state.time.seconds.length >= 2) {
                     this.setState({
-                        seconds: text
+                        time:{
+                            ...this.state.time,
+                            seconds:  text
+                        }
                     });
                 } else {
-                    this.setState(() => ({
-                        seconds: this.state.seconds + text
-                    }));
-                }
+                    this.setState({
+                        time:{
+                            ...this.state.time,
+                            seconds: this.state.time.seconds + text
+                        }
+                    });
+                    }
                 break;
             default:
                 console.log('default');
@@ -96,7 +110,6 @@ class TimerInput extends React.Component {
     }
 
     _hideTimerInput = (q) => {
-        console.log(q);
         this.setState({
             isHideTimerInput: !this.state.isHideTimerInput
         })
@@ -119,9 +132,9 @@ class TimerInput extends React.Component {
                     <ClockTitle text="S"/>
                 </div>
                 <div style={style}>
-                    <Clock text={this.state.hour} clockRef={this.inputHour}/>
-                    <Clock text={this.state.minutes} clockRef={this.inputMinutes}/>
-                    <Clock text={this.state.seconds} clockRef={this.inputSeconds}/>
+                    <Clock text={this.state.time.hour} clockRef={this.inputHour}/>
+                    <Clock text={this.state.time.minutes} clockRef={this.inputMinutes}/>
+                    <Clock text={this.state.time.seconds} clockRef={this.inputSeconds}/>
                 </div>
                 <div>
                     <ButtonPanel style={style}  handleLeft={this._handleLeft.bind(this)}
@@ -129,7 +142,7 @@ class TimerInput extends React.Component {
                                                 onClick={this._setTimer.bind(this)}
                     />
                 </div>
-                <button onClick={this.props.onClick}>START</button>
+                <button  onClick={() => { this.props.updateData(this.state.time)}}>START</button>
             </div>
         )
     }

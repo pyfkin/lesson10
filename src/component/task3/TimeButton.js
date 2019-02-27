@@ -23,11 +23,6 @@ class TimeButton extends React.PureComponent{
         </div>
         )
     }
-
-    // _handleClick = () =>{
-    //     this.props._handleRight();
-    //     // this.props.onButtonClick(this.props.text)
-    // }
 }
 
 export default TimeButton;
