@@ -1,4 +1,5 @@
 import React from 'react';
+import withSize from '../../HOC/withSize';
 
 class Clock extends React.Component{
     constructor(props) {
@@ -26,4 +27,4 @@ class Clock extends React.Component{
     }
 }
 
-export default Clock;
+export default withSize(Clock);
